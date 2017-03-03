@@ -33,11 +33,11 @@ def get_fitness(genes):
 
 def display(candidate, startTime):
     timeDiff = datetime.datetime.now() - startTime
-    print("{0} - {1}\t{2}\t{3}".format(
+    print("{} - {}\t{}\t{}".format(
         ', '.join(map(str, candidate.Genes[0:5])),
         ', '.join(map(str, candidate.Genes[5:10])),
         candidate.Fitness,
-        str(timeDiff)))
+        timeDiff))
 
 
 def mutate(genes, geneset):
@@ -77,11 +77,6 @@ class CardTests(unittest.TestCase):
 
 
 class Fitness:
-    Group1Sum = None
-    Group2Product = None
-    TotalDifference = None
-    DuplicateCount = None
-
     def __init__(self, group1Sum, group2Product, duplicateCount):
         self.Group1Sum = group1Sum
         self.Group2Product = group2Product
@@ -96,7 +91,7 @@ class Fitness:
         return self.TotalDifference < other.TotalDifference
 
     def __str__(self):
-        return "sum: {0} prod: {1} dups: {2}".format(
+        return "sum: {} prod: {} dups: {}".format(
             self.Group1Sum,
             self.Group2Product,
             self.DuplicateCount)

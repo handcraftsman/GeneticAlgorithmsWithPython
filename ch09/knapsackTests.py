@@ -44,10 +44,10 @@ def display(candidate, startTime):
     descriptions = [str(iq.Quantity) + "x" + iq.Item.Name for iq in genes]
     if len(descriptions) == 0:
         descriptions.append("Empty")
-    print("{0}\t{1}\t{2}".format(
+    print("{}\t{}\t{}".format(
         ', '.join(descriptions),
         candidate.Fitness,
-        str(timeDiff)))
+        timeDiff))
 
 
 def max_quantity(item, maxWeight, maxVolume):
@@ -230,11 +230,6 @@ def read_solution_resource_or_find_solution_end(line, data):
 
 
 class Resource:
-    Name = None
-    Value = None
-    Weight = None
-    Volume = None
-
     def __init__(self, name, value, weight, volume):
         self.Name = name
         self.Value = value
@@ -243,9 +238,6 @@ class Resource:
 
 
 class ItemQuantity:
-    Item = None
-    Quantity = None
-
     def __init__(self, item, quantity):
         self.Item = item
         self.Quantity = quantity
@@ -255,10 +247,6 @@ class ItemQuantity:
 
 
 class Fitness:
-    TotalWeight = None
-    TotalVolume = None
-    TotalValue = None
-
     def __init__(self, totalWeight, totalVolume, totalValue):
         self.TotalWeight = totalWeight
         self.TotalVolume = totalVolume
@@ -268,17 +256,13 @@ class Fitness:
         return self.TotalValue > other.TotalValue
 
     def __str__(self):
-        return "wt: {0:0.2f} vol: {1:0.2f} value: {2}".format(
+        return "wt: {:0.2f} vol: {:0.2f} value: {}".format(
             self.TotalWeight,
             self.TotalVolume,
             self.TotalValue)
 
 
 class KnapsackProblemData:
-    Resources = None
-    MaxWeight = None
-    Solution = None
-
     def __init__(self):
         self.Resources = []
         self.MaxWeight = 0
@@ -286,10 +270,6 @@ class KnapsackProblemData:
 
 
 class Window:
-    Min = None
-    Max = None
-    Size = None
-
     def __init__(self, minimum, maximum, size):
         self.Min = minimum
         self.Max = maximum

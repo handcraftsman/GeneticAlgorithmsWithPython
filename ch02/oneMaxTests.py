@@ -27,11 +27,11 @@ def get_fitness(genes):
 
 def display(candidate, startTime):
     timeDiff = datetime.datetime.now() - startTime
-    print("{0}...{1}\t{2:3.2f}\t{3}".format(
+    print("{}...{}\t{:3.2f}\t{}".format(
         ''.join(map(str, candidate.Genes[:15])),
         ''.join(map(str, candidate.Genes[-15:])),
         candidate.Fitness,
-        str(timeDiff)))
+        timeDiff))
 
 
 class OneMaxTests(unittest.TestCase):

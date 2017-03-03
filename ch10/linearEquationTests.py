@@ -31,13 +31,13 @@ def get_fitness(genes, equations):
 def display(candidate, startTime, fnGenesToInputs):
     timeDiff = datetime.datetime.now() - startTime
     symbols = "xyza"
-    result = ', '.join("{0} = {1}".format(s, v)
+    result = ', '.join("{} = {}".format(s, v)
                        for s, v in
                        zip(symbols, fnGenesToInputs(candidate.Genes)))
-    print("{0}\t{1}\t{2}".format(
+    print("{}\t{}\t{}".format(
         result,
         candidate.Fitness,
-        str(timeDiff)))
+        timeDiff))
 
 
 def mutate(genes, sortedGeneset, window, geneIndexes):
@@ -171,8 +171,6 @@ class LinearEquationTests(unittest.TestCase):
 
 
 class Fitness:
-    TotalDifference = None
-
     def __init__(self, totalDifference):
         self.TotalDifference = totalDifference
 
@@ -180,14 +178,10 @@ class Fitness:
         return self.TotalDifference < other.TotalDifference
 
     def __str__(self):
-        return "diff: {0:0.2f}".format(float(self.TotalDifference))
+        return "diff: {:0.2f}".format(float(self.TotalDifference))
 
 
 class Window:
-    Min = None
-    Max = None
-    Size = None
-
     def __init__(self, minimum, maximum, size):
         self.Min = minimum
         self.Max = maximum

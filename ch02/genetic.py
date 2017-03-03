@@ -56,9 +56,6 @@ def get_best(get_fitness, targetLen, optimalFitness, geneSet, display):
 
 
 class Chromosome:
-    Genes = None
-    Fitness = None
-
     def __init__(self, genes, fitness):
         self.Genes = genes
         self.Fitness = fitness
@@ -78,6 +75,6 @@ class Benchmark:
             timings.append(seconds)
             mean = statistics.mean(timings)
             if i < 10 or i % 10 == 9:
-                print("{0} {1:3.2f} {2:3.2f}".format(
+                print("{} {:3.2f} {:3.2f}".format(
                     1 + i, mean,
                     statistics.stdev(timings, mean) if i > 1 else 0))

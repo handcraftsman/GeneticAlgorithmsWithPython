@@ -29,8 +29,8 @@ def get_fitness(guess, target):
 
 def display(candidate, startTime):
     timeDiff = datetime.datetime.now() - startTime
-    print("{0}\t{1}\t{2}".format(
-        candidate.Genes, candidate.Fitness, str(timeDiff)))
+    print("{}\t{}\t{}".format(
+        candidate.Genes, candidate.Fitness, timeDiff))
 
 
 class GuessPasswordTests(unittest.TestCase):

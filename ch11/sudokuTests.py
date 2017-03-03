@@ -46,8 +46,8 @@ def display(candidate, startTime):
         print("", line)
         if row < 8 and row % 3 == 2:
             print(" ----- + ----- + -----")
-    print(" - = -   - = -   - = - {0}\t{1}\n"
-          .format(candidate.Fitness, str(timeDiff)))
+    print(" - = -   - = -   - = - {}\t{}\n"
+          .format(candidate.Fitness, timeDiff))
 
 
 def mutate(genes, validationRules):
@@ -149,9 +149,6 @@ def section_start(index):
 
 
 class Rule:
-    Index = None
-    OtherIndex = None
-
     def __init__(self, it, other):
         if it > other:
             it, other = other, it

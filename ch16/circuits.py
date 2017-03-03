@@ -30,7 +30,7 @@ class Not:
     def __str__(self):
         if self._input is None:
             return "Not(?)"
-        return "Not({0})".format(self._input)
+        return "Not({})".format(self._input)
 
     @staticmethod
     def input_count():
@@ -57,8 +57,8 @@ class GateWith2Inputs:
 
     def __str__(self):
         if self._inputA is None or self._inputB is None:
-            return "{0}(?)".format(self._label)
-        return "{0}({1} {2})".format(self._label, self._inputA, self._inputB)
+            return "{}(?)".format(self._label)
+        return "{}({} {})".format(self._label, self._inputA, self._inputB)
 
     @staticmethod
     def input_count():

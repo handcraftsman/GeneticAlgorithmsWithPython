@@ -45,7 +45,7 @@ def display(candidate, diagonalSize, startTime):
               rowNumber * diagonalSize:(rowNumber + 1) * diagonalSize]
         print("\t ", row, "=", rows[rowNumber])
     print(northeastDiagonalSum, "\t", columns, "\t", southeastDiagonalSum)
-    print(" - - - - - - - - - - -", candidate.Fitness, str(timeDiff))
+    print(" - - - - - - - - - - -", candidate.Fitness, timeDiff)
 
 
 def get_sums(genes, diagonalSize):
@@ -113,8 +113,6 @@ class MagicSquareTests(unittest.TestCase):
 
 
 class Fitness:
-    SumOfDifferences = None
-
     def __init__(self, sumOfDifferences):
         self.SumOfDifferences = sumOfDifferences
 
@@ -122,7 +120,7 @@ class Fitness:
         return self.SumOfDifferences < other.SumOfDifferences
 
     def __str__(self):
-        return "{0}".format(self.SumOfDifferences)
+        return "{}".format(self.SumOfDifferences)
 
 
 if __name__ == '__main__':

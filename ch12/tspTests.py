@@ -38,11 +38,11 @@ def get_fitness(genes, idToLocationLookup):
 
 def display(candidate, startTime):
     timeDiff = datetime.datetime.now() - startTime
-    print("{0}\t{1}\t{2}\t{3}".format(
+    print("{}\t{}\t{}\t{}".format(
         ' '.join(map(str, candidate.Genes)),
         candidate.Fitness,
         candidate.Strategy.name,
-        str(timeDiff)))
+        timeDiff))
 
 
 def get_distance(locationA, locationB):
@@ -181,8 +181,6 @@ def load_data(localFileName):
 
 
 class Fitness:
-    TotalDistance = None
-
     def __init__(self, totalDistance):
         self.TotalDistance = totalDistance
 
@@ -190,13 +188,10 @@ class Fitness:
         return self.TotalDistance < other.TotalDistance
 
     def __str__(self):
-        return "{0:0.2f}".format(self.TotalDistance)
+        return "{:0.2f}".format(self.TotalDistance)
 
 
 class Pair:
-    Node = None
-    Adjacent = None
-
     def __init__(self, node, adjacent):
         if node < adjacent:
             node, adjacent = adjacent, node

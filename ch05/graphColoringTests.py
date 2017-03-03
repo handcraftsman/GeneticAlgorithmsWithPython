@@ -56,7 +56,7 @@ def build_rules(items):
                 rulesAdded[rule] = 1
     for k, v in rulesAdded.items():
         if v != 2:
-            print("rule {0} is not bidirectional".format(k))
+            print("rule {} is not bidirectional".format(k))
     return rulesAdded.keys()
 
 
@@ -68,10 +68,10 @@ def get_fitness(genes, rules, stateIndexLookup):
 
 def display(candidate, startTime):
     timeDiff = datetime.datetime.now() - startTime
-    print("{0}\t{1}\t{2}".format(
+    print("{}\t{}\t{}".format(
         ''.join(map(str, candidate.Genes)),
         candidate.Fitness,
-        str(timeDiff)))
+        timeDiff))
 
 
 class GraphColoringTests(unittest.TestCase):
@@ -111,9 +111,6 @@ class GraphColoringTests(unittest.TestCase):
 
 
 class Rule:
-    Node = None
-    Adjacent = None
-
     def __init__(self, node, adjacent):
         if node < adjacent:
             node, adjacent = adjacent, node

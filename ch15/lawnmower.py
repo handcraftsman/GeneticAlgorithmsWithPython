@@ -28,11 +28,6 @@ class FieldContents(Enum):
 
 
 class Direction:
-    Index = None
-    XOffset = None
-    YOffset = None
-    Symbol = None
-
     def __init__(self, index, xOffset, yOffset, symbol):
         self.Index = index
         self.XOffset = xOffset
@@ -70,9 +65,6 @@ class Directions(Enum):
 
 
 class Location:
-    X = None
-    Y = None
-
     def __init__(self, x, y):
         self.X, self.Y = x, y
 
@@ -82,9 +74,6 @@ class Location:
 
 
 class Mower:
-    Location = None
-    Direction = None
-
     def __init__(self, location, direction):
         self.Location = location
         self.Direction = direction
@@ -103,7 +92,7 @@ class Mower:
             self.StepCount += 1
             field.set(self.Location, self.StepCount
                 if self.StepCount > 9
-                else " {0}".format(self.StepCount))
+                else " {}".format(self.StepCount))
 
     def jump(self, field, forward, right):
         newLocation = self.Direction.move_from(self.Location, forward)
@@ -116,14 +105,10 @@ class Mower:
             self.StepCount += 1
             field.set(self.Location, self.StepCount
                 if self.StepCount > 9
-                else " {0}".format(self.StepCount))
+                else " {}".format(self.StepCount))
 
 
 class Field:
-    Field = None
-    Width = None
-    Height = None
-
     def __init__(self, width, height, initialContent):
         self.Field = [[initialContent] * width for _ in range(height)]
         self.Width = width
@@ -143,7 +128,7 @@ class Field:
                 row = ' '.join(map(str, self.Field[rowIndex]))
             else:
                 r = self.Field[rowIndex][:]
-                r[mower.Location.X] = "{0}{1}".format(
+                r[mower.Location.X] = "{}{}".format(
                     FieldContents.Mower, mower.Direction.Symbol)
                 row = ' '.join(map(str, r))
             print(row)

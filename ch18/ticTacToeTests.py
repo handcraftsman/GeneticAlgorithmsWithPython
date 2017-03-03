@@ -155,7 +155,7 @@ def display(candidate, startTime):
     for i in reversed(range(len(localCopy))):
         localCopy[i] = str(localCopy[i])
 
-    print("\t{0}\n{1}\n{2}".format(
+    print("\t{}\n{}\n{}".format(
         '\n\t'.join([d for d in localCopy]),
         candidate.Fitness,
         timeDiff))
@@ -306,7 +306,7 @@ class TicTacToeTests(unittest.TestCase):
         startTime = datetime.datetime.now()
 
         def fnDisplay(genes, wins, ties, losses, generation):
-            print("-- generation {0} --".format(generation))
+            print("-- generation {} --".format(generation))
             display(genetic.Chromosome(genes,
                                        Fitness(wins, ties, losses, len(genes)),
                                        None), startTime)
@@ -347,24 +347,6 @@ class ContentType:
 
 
 class Square:
-    Index = None
-    IsCenter = False
-    IsCorner = False
-    IsSide = False
-    IsTopRow = False
-    IsMiddleRow = False
-    IsBottomRow = False
-    IsLeftColumn = False
-    IsMiddleColumn = False
-    IsRightColumn = False
-    Row = None
-    Column = None
-    Diagonals = None
-    DiagonalOpposite = None
-    RowOpposite = None
-    ColumnOpposite = None
-    Content = None
-
     def __init__(self, index, content=ContentType.Empty):
         self.Content = content
         self.Index = index
@@ -373,6 +355,20 @@ class Square:
         #   1  2  3
         #   4  5  6
         #   7  8  9
+        self.IsCenter = False
+        self.IsCorner = False
+        self.IsSide = False
+        self.IsTopRow = False
+        self.IsMiddleRow = False
+        self.IsBottomRow = False
+        self.IsLeftColumn = False
+        self.IsMiddleColumn = False
+        self.IsRightColumn = False
+        self.Row = None
+        self.Column = None
+        self.DiagonalOpposite = None
+        self.RowOpposite = None
+        self.ColumnOpposite = None
 
         if index == 1 or index == 2 or index == 3:
             self.IsTopRow = True
@@ -434,10 +430,6 @@ class Square:
 
 
 class Rule:
-    DescriptionPrefix = None
-    ExpectedContent = None
-    Count = None
-
     def __init__(self, descriptionPrefix, expectedContent=None, count=None):
         self.DescriptionPrefix = descriptionPrefix
         self.ExpectedContent = expectedContent
@@ -453,11 +445,6 @@ class Rule:
 
 
 class RuleMetadata:
-    options = None
-    create = None
-    needsSpecificContent = None
-    needsSpecificCount = None
-
     def __init__(self, create, options=None, needsSpecificContent=True,
                  needsSpecificCount=True):
         if options is None:
@@ -710,14 +697,6 @@ opponentHasTwoInARow = WinFilter(ContentType.Opponent)
 
 
 class Fitness:
-    Wins = None
-    PercentWins = None
-    Ties = None
-    PercentTies = None
-    Losses = None
-    PercentLosses = None
-    GeneCount = None
-
     def __init__(self, wins, ties, losses, geneCount):
         self.Wins = wins
         self.Ties = ties
@@ -743,7 +722,7 @@ class Fitness:
         return self.GeneCount < other.GeneCount
 
     def __str__(self):
-        return "{0:.1f}% Losses ({1}), {2:.1f}% Ties ({3}), {4:.1f}% Wins ({5}), {6} rules".format(
+        return "{:.1f}% Losses ({}), {:.1f}% Ties ({}), {:.1f}% Wins ({}), {} rules".format(
             self.PercentLosses,
             self.Losses,
             self.PercentTies,

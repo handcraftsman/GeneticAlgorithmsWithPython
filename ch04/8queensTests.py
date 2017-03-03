@@ -45,10 +45,10 @@ def display(candidate, startTime, size):
     timeDiff = datetime.datetime.now() - startTime
     board = Board(candidate.Genes, size)
     board.print()
-    print("{0}\t- {1}\t{2}".format(
+    print("{}\t- {}\t{}".format(
         ' '.join(map(str, candidate.Genes)),
         candidate.Fitness,
-        str(timeDiff)))
+        timeDiff))
 
 
 class EightQueensTests(unittest.TestCase):
@@ -90,8 +90,6 @@ class Board:
 
 
 class Fitness:
-    Total = None
-
     def __init__(self, total):
         self.Total = total
 
@@ -99,7 +97,7 @@ class Fitness:
         return self.Total < other.Total
 
     def __str__(self):
-        return "{0}".format(self.Total)
+        return "{}".format(self.Total)
 
 
 if __name__ == '__main__':

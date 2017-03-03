@@ -38,10 +38,10 @@ def get_fitness(genes, rules, inputs):
 def display(candidate, startTime):
     circuit = nodes_to_circuit(candidate.Genes)[0]
     timeDiff = datetime.datetime.now() - startTime
-    print("{0}\t{1}\t{2}".format(
+    print("{}\t{}\t{}".format(
         circuit,
         candidate.Fitness,
-        str(timeDiff)))
+        timeDiff))
 
 
 def create_gene(index, gates, sources):
@@ -227,10 +227,6 @@ def nodes_to_circuit(genes):
 
 
 class Node:
-    CreateGate = None
-    IndexA = None
-    IndexB = None
-
     def __init__(self, createGate, indexA=None, indexB=None):
         self.CreateGate = createGate
         self.IndexA = indexA

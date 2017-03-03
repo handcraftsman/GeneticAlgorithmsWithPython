@@ -65,7 +65,7 @@ def get_fitness(genes, expectedTotal, fnEvaluate):
 
 def display(candidate, startTime):
     timeDiff = datetime.datetime.now() - startTime
-    print("{0}\t{1}\t{2}".format(
+    print("{}\t{}\t{}".format(
         (' '.join(map(str, [i for i in candidate.Genes]))),
         candidate.Fitness,
         timeDiff))

@@ -111,7 +111,7 @@ def get_fitness(genes, wanted, unwanted):
         key = str(e)
         key = key[:key.index("at position")]
         info = [str(e),
-                "genes = ['{0}']".format("', '".join(genes)),
+                "genes = ['{}']".format("', '".join(genes)),
                 "regex: " + pattern]
         if key not in regexErrorsSeen or len(info[1]) < len(
                 regexErrorsSeen[key][1]):
@@ -126,8 +126,8 @@ def get_fitness(genes, wanted, unwanted):
 
 def display(candidate, startTime):
     timeDiff = datetime.datetime.now() - startTime
-    print("{0}\t{1}\t{2}".format(
-        repair_regex(candidate.Genes), candidate.Fitness, str(timeDiff)))
+    print("{}\t{}\t{}".format(
+        repair_regex(candidate.Genes), candidate.Fitness, timeDiff))
 
 
 def mutate_add(genes, geneset):
@@ -346,9 +346,6 @@ class RegexTests(unittest.TestCase):
 
 class Fitness:
     UseRegexLength = False
-    NumWantedMatched = None
-    NumUnwantedMatched = None
-    Length = None
 
     def __init__(self, numWantedMatched, totalWanted, numUnwantedMatched,
                  length):
@@ -373,7 +370,7 @@ class Fitness:
         return self.Length < other.Length
 
     def __str__(self):
-        return "matches {0} wanted {1} unwanted, len {2}".format(
+        return "matches {} wanted {} unwanted, len {}".format(
             "all" if self._totalWanted == self.NumWantedMatched else self.NumWantedMatched,
             self.NumUnwantedMatched,
             self.Length)

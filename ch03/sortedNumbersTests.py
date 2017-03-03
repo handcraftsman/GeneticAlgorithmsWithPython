@@ -36,10 +36,10 @@ def get_fitness(genes):
 
 def display(candidate, startTime):
     timeDiff = datetime.datetime.now() - startTime
-    print("{0}\t=> {1}\t{2}".format(
+    print("{}\t=> {}\t{}".format(
         ', '.join(map(str, candidate.Genes)),
         candidate.Fitness,
-        str(timeDiff)))
+        timeDiff))
 
 
 class SortedNumbersTests(unittest.TestCase):
@@ -66,9 +66,6 @@ class SortedNumbersTests(unittest.TestCase):
 
 
 class Fitness:
-    NumbersInSequenceCount = None
-    TotalGap = None
-
     def __init__(self, numbersInSequenceCount, totalGap):
         self.NumbersInSequenceCount = numbersInSequenceCount
         self.TotalGap = totalGap
@@ -79,7 +76,7 @@ class Fitness:
         return self.TotalGap < other.TotalGap
 
     def __str__(self):
-        return "{0} Sequential, {1} Total Gap".format(
+        return "{} Sequential, {} Total Gap".format(
             self.NumbersInSequenceCount,
             self.TotalGap)
 

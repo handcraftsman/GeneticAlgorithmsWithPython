@@ -38,7 +38,7 @@ def display(candidate, startTime, bitValues):
     timeDiff = datetime.datetime.now() - startTime
     numerator = get_numerator(candidate.Genes, bitValues)
     denominator = get_denominator(candidate.Genes, bitValues)
-    print("{0}/{1}\t{2}\t{3}".format(
+    print("{}/{}\t{}\t{}".format(
         numerator,
         denominator,
         candidate.Fitness, timeDiff))
@@ -112,7 +112,7 @@ class ApproximatePiTests(unittest.TestCase):
             return count
 
         def fnDisplay(chromosome):
-            print("{0}\t{1}".format(chromosome.Genes, chromosome.Fitness))
+            print("{}\t{}".format(chromosome.Genes, chromosome.Fitness))
 
         initial = [512, 256, 128, 64, 32, 16, 8, 4, 2, 1]
         print("initial:", initial, fnGetFitness(initial))

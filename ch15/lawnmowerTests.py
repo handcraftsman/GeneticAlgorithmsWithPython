@@ -32,9 +32,9 @@ def display(candidate, startTime, fnEvaluate):
     field, mower, program = fnEvaluate(candidate.Genes)
     timeDiff = datetime.datetime.now() - startTime
     field.display(mower)
-    print("{0}\t{1}".format(
+    print("{}\t{}".format(
         candidate.Fitness,
-        str(timeDiff)))
+        timeDiff))
     program.print()
 
 
@@ -264,9 +264,6 @@ class Turn:
 
 
 class Jump:
-    Forward = None
-    Right = None
-
     def __init__(self, forward, right):
         self.Forward = forward
         self.Right = right
@@ -275,14 +272,10 @@ class Jump:
         mower.jump(field, self.Forward, self.Right)
 
     def __str__(self):
-        return "jump({0},{1})".format(self.Forward, self.Right)
+        return "jump({},{})".format(self.Forward, self.Right)
 
 
 class Repeat:
-    OpCount = None
-    Times = None
-    Ops = None
-
     def __init__(self, opCount, times):
         self.OpCount = opCount
         self.Times = times
@@ -294,7 +287,7 @@ class Repeat:
                 op.execute(mower, field)
 
     def __str__(self):
-        return "repeat({0},{1})".format(
+        return "repeat({},{})".format(
             ' '.join(map(str, self.Ops))
             if len(self.Ops) > 0
             else self.OpCount,
@@ -302,10 +295,6 @@ class Repeat:
 
 
 class Func:
-    Ops = None
-    ExpectCall = None
-    Id = None
-
     def __init__(self, expectCall=False):
         self.Ops = []
         self.ExpectCall = expectCall
@@ -316,15 +305,12 @@ class Func:
             op.execute(mower, field)
 
     def __str__(self):
-        return "func{1}: {0}".format(
+        return "func{}: {}".format(
             ' '.join(map(str, self.Ops)),
             self.Id if self.Id is not None else '')
 
 
 class Call:
-    FuncId = None
-    Funcs = None
-
     def __init__(self, funcId=None):
         self.FuncId = funcId
         self.Funcs = None
@@ -335,16 +321,13 @@ class Call:
             self.Funcs[funcId].execute(mower, field)
 
     def __str__(self):
-        return "call-{0}".format(
+        return "call-{}".format(
             self.FuncId
             if self.FuncId is not None
             else 'func')
 
 
 class Program:
-    Funcs = None
-    Main = None
-
     def __init__(self, genes):
         temp = genes[:]
         funcs = []
@@ -411,10 +394,6 @@ class Program:
 
 
 class Fitness:
-    TotalMowed = None
-    TotalInstructions = None
-    StepCount = None
-
     def __init__(self, totalMowed, totalInstructions, stepCount):
         self.TotalMowed = totalMowed
         self.TotalInstructions = totalInstructions
@@ -428,7 +407,7 @@ class Fitness:
         return self.TotalInstructions < other.TotalInstructions
 
     def __str__(self):
-        return "{0} mowed with {1} instructions and {2} steps".format(
+        return "{} mowed with {} instructions and {} steps".format(
             self.TotalMowed, self.TotalInstructions, self.StepCount)
 
 

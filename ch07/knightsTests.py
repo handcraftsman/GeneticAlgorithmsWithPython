@@ -34,10 +34,10 @@ def display(candidate, startTime, boardWidth, boardHeight):
     board = Board(candidate.Genes, boardWidth, boardHeight)
     board.print()
 
-    print("{0}\n\t{1}\t{2}".format(
+    print("{}\n\t{}\t{}".format(
         ' '.join(map(str, candidate.Genes)),
         candidate.Fitness,
-        str(timeDiff)))
+        timeDiff))
 
 
 def mutate(genes, boardWidth, boardHeight, allPositions, nonEdgePositions):
@@ -160,15 +160,12 @@ class KnightsTests(unittest.TestCase):
 
 
 class Position:
-    X = None
-    Y = None
-
     def __init__(self, x, y):
         self.X = x
         self.Y = y
 
     def __str__(self):
-        return "{0},{1}".format(self.X, self.Y)
+        return "{},{}".format(self.X, self.Y)
 
     def __eq__(self, other):
         return self.X == other.X and self.Y == other.Y
