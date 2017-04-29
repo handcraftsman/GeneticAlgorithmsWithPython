@@ -1,13 +1,22 @@
 # Genetic Algorithms with Python
 Source code from the book Genetic Algorithms with Python by Clinton Sheppard
 
-![alt text](http://www.cs.unm.edu/~sheppard/img/Genetic_Algorithms_with_Python_cover.jpg "Genetic Algorithms with Python")
+Description
+===
 
-ISBN-10: 1540324001, ISBN-13: 978-1540324009
+<img align="right" src="http://www.cs.unm.edu/~sheppard/img/Genetic_Algorithms_with_Python_cover.jpg" alt="Genetic Algorithms with Python cover">
+Get a hands-on introduction to machine learning with genetic algorithms using Python. Step-by-step tutorials build your skills from Hello World! to optimizing one genetic algorithm with another, and finally genetic programming; thus preparing you to apply genetic algorithms to problems in your own field of expertise.
 
-Get it from:
-- https://www.amazon.com/Genetic-Algorithms-Python-Clinton-Sheppard/dp/1540324001/ (paperback)
-- https://www.amazon.com/dp/B01MYOWVJ2/ (Kindle)
+Genetic algorithms are one of the tools you can use to apply machine learning to finding good, sometimes even optimal, solutions to problems that have billions of potential solutions. This book gives you experience making genetic algorithms work for you, using easy-to-follow example projects that you can fall back upon when learning to use other machine learning tools and techniques. Each chapter is a step-by-step tutorial that helps to build your skills at using genetic algorithms to solve problems using Python.
+
+Available from major stores including Amazon, Apple and Barnes &amp; Noble, in paperback, ePub, Kindle and PDF formats.
+
+- https://www.amazon.com/Genetic-Algorithms-Python-Clinton-Sheppard/dp/1540324001/ ISBN-13: 978-1-540324-00-9 (paperback) 
+- https://itunes.apple.com/us/book/genetic-algorithms-with-python/id1231392098 ISBN-13: 978-1-370764-62-4 (ePub)
+- https://www.amazon.com/dp/B01MYOWVJ2/ (Kindle Edition)
+- https://leanpub.com/genetic_algorithms_with_python (PDF)
+
+Try the [sample chapters](http://bit.ly/28TBz3l).
 
 Table of Contents
 ===
@@ -15,10 +24,10 @@ Table of Contents
 A brief introduction to genetic algorithms
 
 Chapter 1: Hello World!
-- Guess a password given the number of correct letters in the guess. Build a mutation engine.
+- Guess a password given the number of correct letters in the guess. Build a mutation engine. [See the sample](http://bit.ly/28TBz3l).
 
 Chapter 2: One Max Problem
-- Produce an array of bits where all are 1s.  Expands the engine to work with any type of gene.
+- Produce an array of bits where all are 1s.  Expands the engine to work with any type of gene. [See the sample](http://bit.ly/28TBz3l).
 
 Chapter 3: Sorted Numbers
 - Produce a sorted integer array. Demonstrates handling multiple fitness goals and constraints between genes.
@@ -54,7 +63,7 @@ Chapter 13: Approximating Pi
 - Find the two 10-bit numbers whose dividend is closest to Pi. Introduces using one genetic algorithm to tune another.
 
 Chapter 14: Equation Generation
-- Find the shortest equation that produces a specific result using addition, subtraction, multiplication, &c. Introduces symbolic genetic programming.
+- Find the shortest equation that produces a specific result using addition, subtraction, multiplication, &amp;c. Introduces symbolic genetic programming.
 
 Chapter 15: The Lawnmower Problem
 - Generate a series of instructions that cause a lawnmower to cut a field of grass. Genetic programming with control structures, objects and automatically defined functions (ADFs).
