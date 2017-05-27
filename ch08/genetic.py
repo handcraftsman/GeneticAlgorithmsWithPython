@@ -107,13 +107,10 @@ def _get_improvement(new_child, generate_parent, maxAge):
 
 
 class Chromosome:
-    Genes = None
-    Fitness = None
-    Age = 0
-
     def __init__(self, genes, fitness):
         self.Genes = genes
         self.Fitness = fitness
+        self.Age = 0
 
 
 class Benchmark:
