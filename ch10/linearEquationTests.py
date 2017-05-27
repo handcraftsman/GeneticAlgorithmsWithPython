@@ -16,7 +16,7 @@
 # permissions and limitations under the License.
 
 import datetime
-import fractions
+from fractions import Fraction
 import random
 import unittest
 
@@ -74,7 +74,7 @@ class LinearEquationTests(unittest.TestCase):
     def test_3_unknowns(self):
         geneRange = [i for i in range(-5, 5) if i != 0]
         geneset = [i for i in set(
-            fractions.Fraction(d, e)
+            Fraction(d, e)
             for d in geneRange
             for e in geneRange if e != 0)]
 
@@ -91,8 +91,8 @@ class LinearEquationTests(unittest.TestCase):
 
         def e3(genes):
             x, y, z = genes
-            return 2 * z * fractions.Fraction(6, x) \
-                   + 3 * fractions.Fraction(y, 2) - 6
+            return 2 * z * Fraction(6, x) \
+                   + 3 * Fraction(y, 2) - 6
 
         equations = [e1, e2, e3]
         self.solve_unknowns(3, geneset, equations, fnGenesToInputs)
@@ -100,7 +100,7 @@ class LinearEquationTests(unittest.TestCase):
     def test_4_unknowns(self):
         geneRange = [i for i in range(-13, 13) if i != 0]
         geneset = [i for i in set(
-            fractions.Fraction(d, e)
+            Fraction(d, e)
             for d in geneRange
             for e in geneRange if e != 0)]
 
@@ -109,16 +109,16 @@ class LinearEquationTests(unittest.TestCase):
 
         def e1(genes):
             x, y, z, a = genes
-            return fractions.Fraction(1, 15) * x \
+            return Fraction(1, 15) * x \
                    - 2 * y \
                    - 15 * z \
-                   - fractions.Fraction(4, 5) * a \
+                   - Fraction(4, 5) * a \
                    - 3
 
         def e2(genes):
             x, y, z, a = genes
-            return -fractions.Fraction(5, 2) * x \
-                   - fractions.Fraction(9, 4) * y \
+            return -Fraction(5, 2) * x \
+                   - Fraction(9, 4) * y \
                    + 12 * z \
                    - a \
                    - 17
@@ -126,17 +126,17 @@ class LinearEquationTests(unittest.TestCase):
         def e3(genes):
             x, y, z, a = genes
             return -13 * x \
-                   + fractions.Fraction(3, 10) * y \
+                   + Fraction(3, 10) * y \
                    - 6 * z \
-                   - fractions.Fraction(2, 5) * a \
+                   - Fraction(2, 5) * a \
                    - 17
 
         def e4(genes):
             x, y, z, a = genes
-            return fractions.Fraction(1, 2) * x \
+            return Fraction(1, 2) * x \
                    + 2 * y \
-                   + fractions.Fraction(7, 4) * z \
-                   + fractions.Fraction(4, 3) * a \
+                   + Fraction(7, 4) * z \
+                   + Fraction(4, 3) * a \
                    + 9
 
         equations = [e1, e2, e3, e4]
