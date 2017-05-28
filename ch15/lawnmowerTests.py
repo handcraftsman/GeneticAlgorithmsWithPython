@@ -305,7 +305,7 @@ class Func:
             op.execute(mower, field)
 
     def __str__(self):
-        return "func{}: {}".format(
+        return "func{1}: {0}".format(
             ' '.join(map(str, self.Ops)),
             self.Id if self.Id is not None else '')
 
