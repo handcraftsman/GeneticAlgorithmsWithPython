@@ -11,6 +11,7 @@ Obtenga una introducción práctica al aprendizaje de la máquina con algoritmos
 
 Algoritmos genéticos son una de las herramientas que puede utilizar para aplicar el aprendizaje de la máquina a la búsqueda de soluciones buenas, a veces incluso óptimas, a los problemas que tienen miles de millones de soluciones potenciales. Este libro le da la experiencia de hacer que los algoritmos genéticos funcionen para usted, usando los problemas fáciles de seguir del ejemplo que usted puede recurrir al aprender a usar otras herramientas y técnicas de aprendizaje de la máquina. Cada capítulo es un tutorial paso a paso que ayuda a desarrollar sus habilidades en el uso de algoritmos genéticos para resolver problemas utilizando Python.
 
+- https://www.amazon.com/dp/1548125180/ ISBN-13: 978-1-548125-18-9 (Edición en tapa blanda)
 - https://www.amazon.com/dp/B072NDMJ4L (Versión Kindle)
 
 Tabla de contenido
