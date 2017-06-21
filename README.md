@@ -4,7 +4,7 @@ Source code from the book Genetic Algorithms with Python by Clinton Sheppard
 Description
 ===
 
-[Edición española](https://github.com/handcraftsman/GeneticAlgorithmsWithPython/tree/master/es)
+[Edición española](https://github.com/handcraftsman/GeneticAlgorithmsWithPython/tree/master/es#descripción)
 
 <img align="right" src="http://www.cs.unm.edu/~sheppard/img/Genetic_Algorithms_with_Python_cover.jpg" alt="Genetic Algorithms with Python cover">
 Get a hands-on introduction to machine learning with genetic algorithms using Python. Step-by-step tutorials build your skills from Hello World! to optimizing one genetic algorithm with another, and finally genetic programming; thus preparing you to apply genetic algorithms to problems in your own field of expertise.

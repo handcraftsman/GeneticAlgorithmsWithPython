@@ -4,7 +4,7 @@ El código del libro Algoritmos Genéticos con Python por Clinton Sheppard
 Descripción
 ===
 
-[English edition](https://github.com/handcraftsman/GeneticAlgorithmsWithPython)
+[English edition](https://github.com/handcraftsman/GeneticAlgorithmsWithPython#description)
 
 <img align="right" src="http://www.cs.unm.edu/~sheppard/img/Algoritmos_Geneticos_Cover_for_Kindle.jpg" alt="tapa del libro Algoritmos Genéticos con Python">
 Obtenga una introducción práctica al aprendizaje de la máquina con algoritmos genéticos usando Python. Tutoriales paso a paso construye sus habilidades de ¡Hola Mundo! a optimizar un algoritmo genético con otro, y finalmente a la programación genética; así, preparándose para aplicar algoritmos genéticos a problemas en su propio campo de experiencia.
