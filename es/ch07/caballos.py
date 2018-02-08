@@ -96,7 +96,7 @@ class PruebasDeCaballos(unittest.TestCase):
         anchura = 4
         altura = 3
         # 1,0   2,0   3,0
-        # 0,2   1,2   2,0
+        # 0,2   1,2   2,2
         # 2 	 C C C .
         # 1 	 . . . .
         # 0 	 . C C C
@@ -114,8 +114,8 @@ class PruebasDeCaballos(unittest.TestCase):
         self.encontrarCaballoPosiciones(anchura, altura, 22)
 
     def test_12x12(self):
-        anchura = 13
-        altura = 13
+        anchura = 12
+        altura = 12
         self.encontrarCaballoPosiciones(anchura, altura, 28)
 
     def test_13x13(self):

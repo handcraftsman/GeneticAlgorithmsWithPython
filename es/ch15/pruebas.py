@@ -245,7 +245,7 @@ class PruebasDeCortadora(unittest.TestCase):
                                       edadMáxima=None, tamañoDePiscina=10,
                                       intercambiar=intercambiar)
 
-        self.assertTrue(not mejor.Aptitud > aptitudÓptima)
+        self.assertTrue(not aptitudÓptima > mejor.Aptitud)
 
 
 class Corta:
@@ -379,14 +379,14 @@ class Programa:
                                     len(funcs[func_id].Instrucciones) == 0:
                         del func.Instrucciones[índice]
 
-            for índice in reversed(range(len(temp))):
-                if type(temp[índice]) is Llama:
-                    func_id = temp[índice].FuncId
-                    if func_id is None:
-                        continue
-                    if func_id >= len(funcs) or \
-                                    len(funcs[func_id].Instrucciones) == 0:
-                        del temp[índice]
+        for índice in reversed(range(len(temp))):
+            if type(temp[índice]) is Llama:
+                func_id = temp[índice].FuncId
+                if func_id is None:
+                    continue
+                if func_id >= len(funcs) or \
+                                len(funcs[func_id].Instrucciones) == 0:
+                    del temp[índice]
         self.Principal = temp
         self.Funcs = funcs
 

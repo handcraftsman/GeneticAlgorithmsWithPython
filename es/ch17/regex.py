@@ -364,7 +364,7 @@ class Aptitud:
         conjunto = (self._totalDeseado -
                     self.NúmeroDeDeseadosQueCoincidieron) + \
                    self.NúmeroDeNoDeseadosQueCoincidieron
-        otroConjunto = (self._totalDeseado -
+        otroConjunto = (otro._totalDeseado -
                         otro.NúmeroDeDeseadosQueCoincidieron) + \
                        otro.NúmeroDeNoDeseadosQueCoincidieron
         if conjunto != otroConjunto:
@@ -379,7 +379,7 @@ class Aptitud:
         return self.Longitud < otro.Longitud
 
     def __str__(self):
-        return "coincide con {} deseadas y {} no deseadas, lon {}".format(
+        return "coincide con: {} deseadas y, {} no deseadas, lon {}".format(
             "todas" if self._totalDeseado ==
                        self.NúmeroDeDeseadosQueCoincidieron else
             self.NúmeroDeDeseadosQueCoincidieron,

@@ -91,7 +91,7 @@ class PruebasDePi(unittest.TestCase):
                                       aptitudÓptima, geneSet, fnMostrar,
                                       fnMudar, edadMáxima=250,
                                       segundosMáximos=segundosMáximos)
-        return mejor.Aptitud >= aptitudÓptima
+        return aptitudÓptima <= mejor.Aptitud
 
     def test_optimize(self):
         geneSet = [i for i in range(1, 512 + 1)]

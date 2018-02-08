@@ -261,7 +261,12 @@ class Aptitud:
         self.ValorTotal = valorTotal
 
     def __gt__(self, otro):
-        return self.ValorTotal > otro.ValorTotal
+        if self.ValorTotal != otro.ValorTotal:
+            return self.ValorTotal > otro.ValorTotal
+        if self.PesoTotal != otro.PesoTotal:
+            return self.PesoTotal < otro.PesoTotal
+        return self.VolumenTotal < otro.VolumenTotal
+
 
     def __str__(self):
         return "peso: {:0.2f} vol: {:0.2f} valor: {}".format(
