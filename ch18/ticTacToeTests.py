@@ -200,7 +200,7 @@ def mutate_move(genes):
     toMove = genes[start:stop]
     genes[start:stop] = []
     index = random.choice(range(len(genes)))
-    if index >= start
+    if index >= start:
         index += 1
     genes[index:index] = toMove
     return True
