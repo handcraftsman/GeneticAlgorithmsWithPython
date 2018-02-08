@@ -170,6 +170,8 @@ def mudar_mover(genes):
     aMover = genes[principio:fin]
     genes[principio:fin] = []
     índice = random.choice(range(len(genes)))
+    if índice == principio:
+        índice += 1
     genes[índice:índice] = aMover
     return True
 
