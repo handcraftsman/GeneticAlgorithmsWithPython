@@ -45,6 +45,7 @@ def mutate(genes, geneSet, minGenes, maxGenes, fnGetFitness, maxRounds):
         count -= 1
         if fnGetFitness(genes) > initialFitness:
             return
+
         adding = len(genes) == 0 or \
                  (len(genes) < maxGenes and random.randint(0, 5) == 0)
         if adding:
@@ -236,7 +237,7 @@ class LawnmowerTests(unittest.TestCase):
                                 fnDisplay, fnMutate, fnCreate, maxAge=None,
                                 poolSize=10, crossover=crossover)
 
-        self.assertTrue(not best.Fitness > optimalFitness)
+        self.assertTrue(not optimalFitness > best.Fitness)
 
 
 class Mow:
@@ -342,6 +343,7 @@ class Program:
 
             if type(temp[index]) is Call:
                 temp[index].Funcs = funcs
+
             if type(temp[index]) is Func:
                 if len(funcs) > 0 and not temp[index].ExpectCall:
                     temp[index] = Call()
@@ -369,14 +371,14 @@ class Program:
                                     len(funcs[func_id].Ops) == 0:
                         del func.Ops[index]
 
-            for index in reversed(range(len(temp))):
-                if type(temp[index]) is Call:
-                    func_id = temp[index].FuncId
-                    if func_id is None:
-                        continue
-                    if func_id >= len(funcs) or \
-                                    len(funcs[func_id].Ops) == 0:
-                        del temp[index]
+        for index in reversed(range(len(temp))):
+            if type(temp[index]) is Call:
+                func_id = temp[index].FuncId
+                if func_id is None:
+                    continue
+                if func_id >= len(funcs) or \
+                                len(funcs[func_id].Ops) == 0:
+                    del temp[index]
         self.Main = temp
         self.Funcs = funcs
 
