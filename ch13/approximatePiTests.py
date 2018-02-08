@@ -90,7 +90,7 @@ class ApproximatePiTests(unittest.TestCase):
         best = genetic.get_best(fnGetFitness, length, optimalFitness,
                                 geneset, fnDisplay, fnMutate, maxAge=250,
                                 maxSeconds=maxSeconds)
-        return best.Fitness >= optimalFitness
+        return optimalFitness <= best.Fitness
 
     def test_optimize(self):
         geneset = [i for i in range(1, 512 + 1)]
