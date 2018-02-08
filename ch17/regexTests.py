@@ -357,7 +357,7 @@ class Fitness:
     def __gt__(self, other):
         combined = (self._totalWanted - self.NumWantedMatched) \
                    + self.NumUnwantedMatched
-        otherCombined = (self._totalWanted - other.NumWantedMatched) \
+        otherCombined = (other._totalWanted - other.NumWantedMatched) \
                         + other.NumUnwantedMatched
         if combined != otherCombined:
             return combined < otherCombined
@@ -370,7 +370,7 @@ class Fitness:
         return self.Length < other.Length
 
     def __str__(self):
-        return "matches {} wanted {} unwanted, len {}".format(
+        return "matches: {} wanted, {} unwanted, len {}".format(
             "all" if self._totalWanted == self.NumWantedMatched else self.NumWantedMatched,
             self.NumUnwantedMatched,
             self.Length)

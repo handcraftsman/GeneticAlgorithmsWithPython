@@ -93,7 +93,7 @@ class KnightsTests(unittest.TestCase):
         width = 4
         height = 3
         # 1,0   2,0   3,0
-        # 0,2   1,2   2,0
+        # 0,2   1,2   2,2
         # 2 	 N N N .
         # 1 	 . . . .
         # 0 	 . N N N
@@ -111,8 +111,8 @@ class KnightsTests(unittest.TestCase):
         self.find_knight_positions(width, height, 22)
 
     def test_12x12(self):
-        width = 13
-        height = 13
+        width = 12
+        height = 12
         self.find_knight_positions(width, height, 28)
 
     def test_13x13(self):
