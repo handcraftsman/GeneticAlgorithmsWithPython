@@ -93,20 +93,20 @@ def _obtener_mejoras(nuevo_niño, generar_padre, edadMáxima):
             if random.random() < exp(-proporciónSimilar):
                 padre = niño
                 continue
+            mejorPadre.Edad = 0
             padre = mejorPadre
-            padre.Edad = 0
             continue
         if not niño.Aptitud > padre.Aptitud:
             # mismo aptitud
             niño.Edad = padre.Edad + 1
             padre = niño
             continue
+        niño.Edad = 0
         padre = niño
-        padre.Edad = 0
         if niño.Aptitud > mejorPadre.Aptitud:
-            yield niño
             mejorPadre = niño
-            aptitudesHistóricas.append(niño.Aptitud)
+            yield mejorPadre
+            aptitudesHistóricas.append(mejorPadre.Aptitud)
 
 
 class Cromosoma:
