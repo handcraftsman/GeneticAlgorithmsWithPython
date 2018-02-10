@@ -1,0 +1,6 @@
+images
+output
+**/__pycache__/*
+/.idea
+**/.cache/*
+*.ukp
