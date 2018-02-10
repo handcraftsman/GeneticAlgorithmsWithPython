@@ -90,20 +90,20 @@ def _get_improvement(new_child, generate_parent, maxAge):
             if random.random() < exp(-proportionSimilar):
                 parent = child
                 continue
+            bestParent.Age = 0
             parent = bestParent
-            parent.Age = 0
             continue
         if not child.Fitness > parent.Fitness:
             # same fitness
             child.Age = parent.Age + 1
             parent = child
             continue
+        child.Age = 0
         parent = child
-        parent.Age = 0
         if child.Fitness > bestParent.Fitness:
-            yield child
             bestParent = child
-            historicalFitnesses.append(child.Fitness)
+            yield bestParent
+            historicalFitnesses.append(bestParent.Fitness)
 
 
 class Chromosome:
