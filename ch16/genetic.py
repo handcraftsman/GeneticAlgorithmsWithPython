@@ -149,20 +149,20 @@ def _get_improvement(new_child, generate_parent, maxAge, poolSize,
             if random.random() < exp(-proportionSimilar):
                 parents[pindex] = child
                 continue
+            bestParent.Age = 0
             parents[pindex] = bestParent
-            parent.Age = 0
             continue
         if not child.Fitness > parent.Fitness:
             # same fitness
             child.Age = parent.Age + 1
             parents[pindex] = child
             continue
+        child.Age = 0
         parents[pindex] = child
-        parent.Age = 0
         if child.Fitness > bestParent.Fitness:
-            yield False, child
             bestParent = child
-            historicalFitnesses.append(child.Fitness)
+            yield False, bestParent
+            historicalFitnesses.append(bestParent.Fitness)
 
 
 def hill_climbing(optimizationFunction, is_improvement, is_optimal,
