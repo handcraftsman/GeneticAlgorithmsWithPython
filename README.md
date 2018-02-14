@@ -14,6 +14,7 @@ Genetic algorithms are one of the tools you can use to apply machine learning to
 Available from major stores including Amazon, Apple and Barnes &amp; Noble, in paperback, ePub, Kindle and PDF formats.
 
 - https://www.amazon.com/Genetic-Algorithms-Python-Clinton-Sheppard/dp/1540324001/ ISBN-13: 978-1-540324-00-9 (paperback) 
+- https://www.amazon.com/Genetic-Algorithms-Python-Clinton-Sheppard/dp/1732029806/ ISBN-13: 978-1-7320298-0-4 (hardcover)
 - https://itunes.apple.com/us/book/genetic-algorithms-with-python/id1231392098 ISBN-13: 978-1-370764-62-4 (ePub)
 - https://www.amazon.com/dp/B01MYOWVJ2/ (Kindle Edition)
 - https://leanpub.com/genetic_algorithms_with_python (PDF)
