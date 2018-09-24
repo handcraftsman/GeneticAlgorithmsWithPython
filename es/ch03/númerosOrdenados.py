@@ -77,7 +77,7 @@ class Aptitud:
         return self.BrechaTotal < otro.BrechaTotal
 
     def __str__(self):
-        return "{} en secuencia, {} brecha".format(
+        return "{} secuencial, distancia {}".format(
             self.NúmerosEnSecuencia,
             self.BrechaTotal)
 
