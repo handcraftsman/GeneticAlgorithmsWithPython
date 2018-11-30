@@ -33,7 +33,7 @@ def _generar_padre(longitud, geneSet, obtener_aptitud):
     return Cromosoma(genes, aptitud, Estrategias.Creación)
 
 
-def _mudar(padre, geneSet, obtener_aptitud):
+def _mutar(padre, geneSet, obtener_aptitud):
     genesDelNiño = padre.Genes[:]
     índice = random.randrange(0, len(padre.Genes))
     nuevoGen, alterno = random.sample(geneSet, 2)
@@ -43,7 +43,7 @@ def _mudar(padre, geneSet, obtener_aptitud):
     return Cromosoma(genesDelNiño, aptitud, Estrategias.Mutación)
 
 
-def _mudar_personalizada(padre, mutación_personalizada, obtener_aptitud):
+def _mutar_personalizada(padre, mutación_personalizada, obtener_aptitud):
     genesDelNiño = padre.Genes[:]
     mutación_personalizada(genesDelNiño)
     aptitud = obtener_aptitud(genesDelNiño)
@@ -51,7 +51,7 @@ def _mudar_personalizada(padre, mutación_personalizada, obtener_aptitud):
 
 
 def _intercambiar(genesDePadre, índice, padres, obtener_aptitud, intercambiar,
-                  mudar, generar_padre):
+                  mutar, generar_padre):
     índiceDeDonante = random.randrange(0, len(padres))
     if índiceDeDonante == índice:
         índiceDeDonante = (índiceDeDonante + 1) % len(padres)
@@ -59,7 +59,7 @@ def _intercambiar(genesDePadre, índice, padres, obtener_aptitud, intercambiar,
     if genesDelNiño is None:
         # padre y donante son indistinguibles
         padres[índiceDeDonante] = generar_padre()
-        return mudar(padres[índice])
+        return mutar(padres[índice])
     aptitud = obtener_aptitud(genesDelNiño)
     return Cromosoma(genesDelNiño, aptitud, Estrategias.Intercambio)
 
@@ -69,11 +69,11 @@ def obtener_mejor(obtener_aptitud, longitudObjetivo, aptitudÓptima, geneSet,
                   creación_personalizada=None, edadMáxima=None,
                   tamañoDePiscina=1, intercambiar=None, segundosMáximos=None):
     if mutación_personalizada is None:
-        def fnMudar(padre):
-            return _mudar(padre, geneSet, obtener_aptitud)
+        def fnMutar(padre):
+            return _mutar(padre, geneSet, obtener_aptitud)
     else:
-        def fnMudar(padre):
-            return _mudar_personalizada(padre, mutación_personalizada,
+        def fnMutar(padre):
+            return _mutar_personalizada(padre, mutación_personalizada,
                                         obtener_aptitud)
 
     if creación_personalizada is None:
@@ -87,9 +87,9 @@ def obtener_mejor(obtener_aptitud, longitudObjetivo, aptitudÓptima, geneSet,
 
     búsquedaDeEstrategia = {
         Estrategias.Creación: lambda p, i, o: fnGenerarPadre(),
-        Estrategias.Mutación: lambda p, i, o: fnMudar(p),
+        Estrategias.Mutación: lambda p, i, o: fnMutar(p),
         Estrategias.Intercambio: lambda p, i, o:
-        _intercambiar(p.Genes, i, o, obtener_aptitud, intercambiar, fnMudar,
+        _intercambiar(p.Genes, i, o, obtener_aptitud, intercambiar, fnMutar,
                       fnGenerarPadre)
     }
 
@@ -101,7 +101,7 @@ def obtener_mejor(obtener_aptitud, longitudObjetivo, aptitudÓptima, geneSet,
             return random.choice(estrategiasUsadas)(padre, índice, padres)
     else:
         def fnNuevoNiño(padre, índice, padres):
-            return fnMudar(padre)
+            return fnMutar(padre)
 
     for caducado, mejora in _obtener_mejoras(fnNuevoNiño, fnGenerarPadre,
                                              edadMáxima, tamañoDePiscina,

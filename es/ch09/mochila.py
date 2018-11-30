@@ -81,7 +81,7 @@ def añadir(genes, artículos, pesoMáximo, volumenMáximo):
                             cantidadMáxima) if cantidadMáxima > 0 else None
 
 
-def mudar(genes, artículos, pesoMáximo, volumenMáximo, ventana):
+def mutar(genes, artículos, pesoMáximo, volumenMáximo, ventana):
     ventana.deslizar()
     aptitud = obtener_aptitud(genes)
     pesoRestante = pesoMáximo - aptitud.PesoTotal
@@ -172,12 +172,12 @@ class PruebasDeMochila(unittest.TestCase):
         def fnCrear():
             return crear(artículos, pesoMáximo, volumenMáximo)
 
-        def fnMudar(genes):
-            mudar(genes, artículosOrdenados, pesoMáximo, volumenMáximo,
+        def fnMutar(genes):
+            mutar(genes, artículosOrdenados, pesoMáximo, volumenMáximo,
                   ventana)
 
         mejor = genetic.obtener_mejor(fnObtenerAptitud, None, aptitudÓptima,
-                                      None, fnMostrar, fnMudar, fnCrear,
+                                      None, fnMostrar, fnMutar, fnCrear,
                                       edadMáxima=50)
         self.assertTrue(not aptitudÓptima > mejor.Aptitud)
 
@@ -266,7 +266,6 @@ class Aptitud:
         if self.PesoTotal != otro.PesoTotal:
             return self.PesoTotal < otro.PesoTotal
         return self.VolumenTotal < otro.VolumenTotal
-
 
     def __str__(self):
         return "peso: {:0.2f} vol: {:0.2f} valor: {}".format(

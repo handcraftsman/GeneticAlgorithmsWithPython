@@ -52,7 +52,7 @@ def obtener_distancia(ubicaciónA, ubicaciónB):
     return ladoC
 
 
-def mudar(genes, fnObtenerAptitud):
+def mutar(genes, fnObtenerAptitud):
     cuenta = random.randint(2, len(genes))
     aptitudInicial = fnObtenerAptitud(genes)
     while cuenta > 0:
@@ -145,8 +145,8 @@ class PruebasDeVendedorAmbulante(unittest.TestCase):
         def fnObtenerAptitud(genes):
             return obtener_aptitud(genes, búsquedaDeUbicación)
 
-        def fnMudar(genes):
-            mudar(genes, fnObtenerAptitud)
+        def fnMutar(genes):
+            mutar(genes, fnObtenerAptitud)
 
         def fnIntercambio(padre, donante):
             return intercambiar(padre, donante, fnObtenerAptitud)
@@ -154,7 +154,7 @@ class PruebasDeVendedorAmbulante(unittest.TestCase):
         aptitudÓptima = fnObtenerAptitud(secuenciaÓptima)
         horaInicio = datetime.datetime.now()
         mejor = genetic.obtener_mejor(fnObtenerAptitud, None, aptitudÓptima,
-                                      None, fnMostrar, fnMudar, fnCrear,
+                                      None, fnMostrar, fnMutar, fnCrear,
                                       edadMáxima=500, tamañoDePiscina=25,
                                       intercambiar=fnIntercambio)
         self.assertTrue(not aptitudÓptima > mejor.Aptitud)

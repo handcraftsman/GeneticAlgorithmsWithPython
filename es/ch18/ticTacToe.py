@@ -161,13 +161,13 @@ def mostrar(candidato, horaInicio):
         diferencia))
 
 
-def mudar_añadir(genes, geneSet):
+def mutar_añadir(genes, geneSet):
     índice = random.randrange(0, len(genes) + 1) if len(genes) > 0 else 0
     genes[índice:índice] = [random.choice(geneSet)]
     return True
 
 
-def mudar_remover(genes):
+def mutar_remover(genes):
     if len(genes) < 1:
         return False
     del genes[random.randrange(0, len(genes))]
@@ -176,7 +176,7 @@ def mudar_remover(genes):
     return True
 
 
-def mudar_reemplazar(genes, geneSet):
+def mutar_reemplazar(genes, geneSet):
     if len(genes) < 1:
         return False
     índice = random.randrange(0, len(genes))
@@ -184,7 +184,7 @@ def mudar_reemplazar(genes, geneSet):
     return True
 
 
-def mudar_intercambiar_adyacente(genes):
+def mutar_intercambiar_adyacente(genes):
     if len(genes) < 2:
         return False
     índice = random.choice(range(len(genes) - 1))
@@ -192,7 +192,7 @@ def mudar_intercambiar_adyacente(genes):
     return True
 
 
-def mudar_mover(genes):
+def mutar_mover(genes):
     if len(genes) < 3:
         return False
     principio = random.choice(range(len(genes)))
@@ -206,7 +206,7 @@ def mudar_mover(genes):
     return True
 
 
-def mudar(genes, fnObtenerAptitud, operadoresDeMutación, recuentoDeMutaciones):
+def mutar(genes, fnObtenerAptitud, operadoresDeMutación, recuentoDeMutaciones):
     aptitudInicial = fnObtenerAptitud(genes)
     cuenta = random.choice(recuentoDeMutaciones)
     for i in range(1, cuenta + 2):
@@ -276,20 +276,20 @@ class TicTacToeTests(unittest.TestCase):
         recuentoDeMutaciones = [1]
 
         operadoresDeMutación = [
-            partial(mudar_añadir, geneSet=geneSet),
-            partial(mudar_reemplazar, geneSet=geneSet),
-            mudar_remover,
-            mudar_intercambiar_adyacente,
-            mudar_mover,
+            partial(mutar_añadir, geneSet=geneSet),
+            partial(mutar_reemplazar, geneSet=geneSet),
+            mutar_remover,
+            mutar_intercambiar_adyacente,
+            mutar_mover,
         ]
 
-        def fnMudar(genes):
-            mudar(genes, fnObtenerAptitud, operadoresDeMutación, recuentoDeMutaciones)
+        def fnMutar(genes):
+            mutar(genes, fnObtenerAptitud, operadoresDeMutación, recuentoDeMutaciones)
 
         def fnIntercambio(padre, donante):
             niño = padre[0:int(len(padre) / 2)] + \
                     donante[int(len(donante) / 2):]
-            fnMudar(niño)
+            fnMutar(niño)
             return niño
 
         def fnCrear():
@@ -297,7 +297,7 @@ class TicTacToeTests(unittest.TestCase):
 
         aptitudÓptima = Aptitud(620, 120, 0, 11)
         mejor = genetic.obtener_mejor(fnObtenerAptitud, mínGenes, aptitudÓptima, None,
-                                fnMostrar, fnMudar, fnCrear, edadMáxima=500,
+                                fnMostrar, fnMutar, fnCrear, edadMáxima=500,
                                 tamañoDePiscina=20, intercambiar=fnIntercambio)
         self.assertTrue(not aptitudÓptima > mejor.Aptitud)
 
@@ -316,20 +316,20 @@ class TicTacToeTests(unittest.TestCase):
         recuentoDeMutaciones = [1]
 
         operadoresDeMutación = [
-            partial(mudar_añadir, geneSet=geneSet),
-            partial(mudar_reemplazar, geneSet=geneSet),
-            mudar_remover,
-            mudar_intercambiar_adyacente,
-            mudar_mover,
+            partial(mutar_añadir, geneSet=geneSet),
+            partial(mutar_reemplazar, geneSet=geneSet),
+            mutar_remover,
+            mutar_intercambiar_adyacente,
+            mutar_mover,
         ]
 
-        def fnMudar(genes):
-            mudar(genes, lambda x: 0, operadoresDeMutación, recuentoDeMutaciones)
+        def fnMutar(genes):
+            mutar(genes, lambda x: 0, operadoresDeMutación, recuentoDeMutaciones)
 
         def fnIntercambio(padre, donante):
             niño = padre[0:int(len(padre) / 2)] + \
                     donante[int(len(donante) / 2):]
-            fnMudar(niño)
+            fnMutar(niño)
             return niño
 
         def fnCrear():

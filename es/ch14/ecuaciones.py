@@ -81,7 +81,7 @@ def crear(números, operaciones, númerosMin, númerosMax):
     return genes
 
 
-def mudar(genes, números, operaciones, númerosMin, númerosMax,
+def mutar(genes, números, operaciones, númerosMin, númerosMax,
           fnObtenerAptitud):
     cuenta = random.randint(1, 10)
     aptitudInicial = fnObtenerAptitud(genes)
@@ -159,13 +159,13 @@ class PruebasDeEcuaciones(unittest.TestCase):
         def fnCrear():
             return crear(números, operaciones, númerosMin, númerosMax)
 
-        def fnMudar(niño):
-            mudar(niño, números, operaciones, númerosMin, númerosMax,
+        def fnMutar(niño):
+            mutar(niño, números, operaciones, númerosMin, númerosMax,
                   fnObtenerAptitud)
 
         aptitudÓptima = fnObtenerAptitud(soluciónDeLongitudÓptima)
         mejor = genetic.obtener_mejor(fnObtenerAptitud, None, aptitudÓptima,
-                                      None, fnMostrar, fnMudar, fnCrear,
+                                      None, fnMostrar, fnMutar, fnCrear,
                                       edadMáxima=50)
         self.assertTrue(not aptitudÓptima > mejor.Aptitud)
 

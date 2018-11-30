@@ -52,7 +52,7 @@ def mostrar(candidato, horaInicio):
           .format(candidato.Aptitud, diferencia))
 
 
-def mudar(genes, reglasDeValidación):
+def mutar(genes, reglasDeValidación):
     reglaSeleccionada = next(regla for regla in reglasDeValidación
                              if genes[regla.Índice] == genes[regla.OtroÍndice])
     if reglaSeleccionada is None:
@@ -99,11 +99,11 @@ class PruebasDeSudoku(unittest.TestCase):
         def fnCrear():
             return random.sample(geneSet * 9, 81)
 
-        def fnMudar(genes):
-            mudar(genes, reglasDeValidación)
+        def fnMutar(genes):
+            mutar(genes, reglasDeValidación)
 
         mejor = genetic.obtener_mejor(fnObtenerAptitud, None, valorÓptimo,
-                                      None, fnMostrar, fnMudar, fnCrear,
+                                      None, fnMostrar, fnMutar, fnCrear,
                                       edadMáxima=50)
         self.assertEqual(mejor.Aptitud, valorÓptimo)
 

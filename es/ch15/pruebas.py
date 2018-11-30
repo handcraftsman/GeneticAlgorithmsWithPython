@@ -38,7 +38,7 @@ def mostrar(candidato, horaInicio, fnEvaluar):
     programa.print()
 
 
-def mudar(genes, geneSet, mínGenes, máxGenes, fnObtenerAptitud, rondasMáximas):
+def mutar(genes, geneSet, mínGenes, máxGenes, fnObtenerAptitud, rondasMáximas):
     cuenta = random.randint(1, rondasMáximas)
     aptitudInicial = fnObtenerAptitud(genes)
     while cuenta > 0:
@@ -232,8 +232,8 @@ class PruebasDeCortadora(unittest.TestCase):
         def fnMostrar(candidato):
             mostrar(candidato, horaInicio, fnEvaluar)
 
-        def fnMudar(niño):
-            mudar(niño, geneSet, mínGenes, máxGenes, fnObtenerAptitud,
+        def fnMutar(niño):
+            mutar(niño, geneSet, mínGenes, máxGenes, fnObtenerAptitud,
                   rondasMáximasDeMutación)
 
         aptitudÓptima = Aptitud(anchura * altura,
@@ -241,7 +241,7 @@ class PruebasDeCortadora(unittest.TestCase):
                                 númeroEsperadoDePasos)
 
         mejor = genetic.obtener_mejor(fnObtenerAptitud, None, aptitudÓptima,
-                                      None, fnMostrar, fnMudar, fnCrear,
+                                      None, fnMostrar, fnMutar, fnCrear,
                                       edadMáxima=None, tamañoDePiscina=10,
                                       intercambiar=intercambiar)
 

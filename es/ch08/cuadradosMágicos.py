@@ -65,7 +65,7 @@ def obtener_sums(genes, tamañoDiagonal):
     return filas, columnas, sumaDiagonalNoreste, sumaDiagonalSureste
 
 
-def mudar(genes, índices):
+def mutar(genes, índices):
     índiceA, índiceB = random.sample(índices, 2)
     genes[índiceA], genes[índiceB] = genes[índiceB], genes[índiceA]
 
@@ -100,8 +100,8 @@ class PruebasDeCuadradosMagicos(unittest.TestCase):
 
         geneÍndices = [i for i in range(0, len(geneSet))]
 
-        def fnMudar(genes):
-            mudar(genes, geneÍndices)
+        def fnMutar(genes):
+            mutar(genes, geneÍndices)
 
         def fnCreaciónPersonalizada():
             return random.sample(geneSet, len(geneSet))
@@ -109,7 +109,7 @@ class PruebasDeCuadradosMagicos(unittest.TestCase):
         valorÓptimo = Aptitud(0)
         horaInicio = datetime.datetime.now()
         mejor = genetic.obtener_mejor(fnObtenerAptitud, nCuadrado, valorÓptimo,
-                                      geneSet, fnMostrar, fnMudar,
+                                      geneSet, fnMostrar, fnMutar,
                                       fnCreaciónPersonalizada, edadMáxima)
         self.assertTrue(not valorÓptimo > mejor.Aptitud)
 

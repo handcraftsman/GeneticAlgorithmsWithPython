@@ -40,7 +40,7 @@ def mostrar(candidato, horaInicio, fnGenesAEntradas):
         diferencia))
 
 
-def mudar(genes, geneSetOrdenado, ventana, geneÍndices):
+def mutar(genes, geneSetOrdenado, ventana, geneÍndices):
     índices = random.sample(geneÍndices, random.randint(1, len(genes))) \
         if random.randint(0, 10) == 0 else [random.choice(geneÍndices)]
     ventana.deslizar()
@@ -161,13 +161,13 @@ class PruebasDeEcuacionesLineales(unittest.TestCase):
         def fnObtenerAptitud(genes):
             return obtener_aptitud(genes, ecuaciones)
 
-        def fnMudar(genes):
-            mudar(genes, geneSetOrdenado, ventana, geneÍndices)
+        def fnMutar(genes):
+            mutar(genes, geneSetOrdenado, ventana, geneÍndices)
 
         aptitudÓptima = Aptitud(0)
         mejor = genetic.obtener_mejor(fnObtenerAptitud, numUnknowns,
                                       aptitudÓptima, geneSet, fnMostrar,
-                                      fnMudar, edadMáxima=edadMáxima)
+                                      fnMutar, edadMáxima=edadMáxima)
         self.assertTrue(not aptitudÓptima > mejor.Aptitud)
 
 

@@ -32,7 +32,7 @@ def _generar_padre(longitud, geneSet, obtener_aptitud):
     return Cromosoma(genes, aptitud)
 
 
-def _mudar(padre, geneSet, obtener_aptitud):
+def _mutar(padre, geneSet, obtener_aptitud):
     genesDelNiño = padre.Genes[:]
     índice = random.randrange(0, len(padre.Genes))
     nuevoGen, alterno = random.sample(geneSet, 2)
@@ -42,7 +42,7 @@ def _mudar(padre, geneSet, obtener_aptitud):
     return Cromosoma(genesDelNiño, aptitud)
 
 
-def _mudar_personalizada(padre, mutación_personalizada, obtener_aptitud):
+def _mutar_personalizada(padre, mutación_personalizada, obtener_aptitud):
     genesDelNiño = padre.Genes[:]
     mutación_personalizada(genesDelNiño)
     aptitud = obtener_aptitud(genesDelNiño)
@@ -53,11 +53,11 @@ def obtener_mejor(obtener_aptitud, longitudObjetivo, aptitudÓptima, geneSet,
                   mostrar, mutación_personalizada=None,
                   creación_personalizada=None, edadMáxima=None):
     if mutación_personalizada is None:
-        def fnMudar(padre):
-            return _mudar(padre, geneSet, obtener_aptitud)
+        def fnMutar(padre):
+            return _mutar(padre, geneSet, obtener_aptitud)
     else:
-        def fnMudar(padre):
-            return _mudar_personalizada(padre, mutación_personalizada,
+        def fnMutar(padre):
+            return _mutar_personalizada(padre, mutación_personalizada,
                                         obtener_aptitud)
 
     if creación_personalizada is None:
@@ -68,7 +68,7 @@ def obtener_mejor(obtener_aptitud, longitudObjetivo, aptitudÓptima, geneSet,
             genes = creación_personalizada()
             return Cromosoma(genes, obtener_aptitud(genes))
 
-    for mejora in _obtener_mejoras(fnMudar, fnGenerarPadre, edadMáxima):
+    for mejora in _obtener_mejoras(fnMutar, fnGenerarPadre, edadMáxima):
         mostrar(mejora)
         if not aptitudÓptima > mejora.Aptitud:
             return mejora

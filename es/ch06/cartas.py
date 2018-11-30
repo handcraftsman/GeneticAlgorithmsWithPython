@@ -40,7 +40,7 @@ def mostrar(candidato, horaInicio):
         diferencia))
 
 
-def mudar(genes, geneSet):
+def mutar(genes, geneSet):
     if len(genes) == len(set(genes)):
         cuenta = random.randint(1, 4)
         while cuenta > 0:
@@ -64,13 +64,13 @@ class PruebasDeCartas(unittest.TestCase):
         def fnObtenerAptitud(genes):
             return obtener_aptitud(genes)
 
-        def fnMudar(genes):
-            mudar(genes, geneSet)
+        def fnMutar(genes):
+            mutar(genes, geneSet)
 
         aptitudÓptima = Aptitud(36, 360, 0)
         mejor = genetic.obtener_mejor(fnObtenerAptitud, 10, aptitudÓptima,
                                       geneSet, fnMostrar,
-                                      mutación_personalizada=fnMudar)
+                                      mutación_personalizada=fnMutar)
         self.assertTrue(not aptitudÓptima > mejor.Aptitud)
 
     def test_comparativa(self):

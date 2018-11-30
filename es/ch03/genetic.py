@@ -30,7 +30,7 @@ def _generar_padre(longitud, geneSet, obtener_aptitud):
     return Cromosoma(genes, aptitud)
 
 
-def _mudar(padre, geneSet, obtener_aptitud):
+def _mutar(padre, geneSet, obtener_aptitud):
     genesDelNiño = padre.Genes[:]
     índice = random.randrange(0, len(padre.Genes))
     nuevoGen, alterno = random.sample(geneSet, 2)
@@ -44,13 +44,13 @@ def obtener_mejor(obtener_aptitud, longitudObjetivo, aptitudÓptima, geneSet,
                   mostrar):
     random.seed()
 
-    def fnMudar(padre):
-        return _mudar(padre, geneSet, obtener_aptitud)
+    def fnMutar(padre):
+        return _mutar(padre, geneSet, obtener_aptitud)
 
     def fnGenerarPadre():
         return _generar_padre(longitudObjetivo, geneSet, obtener_aptitud)
 
-    for mejora in _obtener_mejoras(fnMudar, fnGenerarPadre):
+    for mejora in _obtener_mejoras(fnMutar, fnGenerarPadre):
         mostrar(mejora)
         if not aptitudÓptima > mejora.Aptitud:
             return mejora

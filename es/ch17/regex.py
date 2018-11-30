@@ -131,13 +131,13 @@ def mostrar(candidato, horaInicio):
         reparar_regex(candidato.Genes), candidato.Aptitud, diferencia))
 
 
-def mudar_añadir(genes, geneSet):
+def mutar_añadir(genes, geneSet):
     índice = random.randrange(0, len(genes) + 1) if len(genes) > 0 else 0
     genes[índice:índice] = [random.choice(geneSet)]
     return True
 
 
-def mudar_remover(genes):
+def mutar_remover(genes):
     if len(genes) < 1:
         return False
     del genes[random.randrange(0, len(genes))]
@@ -146,7 +146,7 @@ def mudar_remover(genes):
     return True
 
 
-def mudar_reemplazar(genes, geneSet):
+def mutar_reemplazar(genes, geneSet):
     if len(genes) < 1:
         return False
     índice = random.randrange(0, len(genes))
@@ -154,7 +154,7 @@ def mudar_reemplazar(genes, geneSet):
     return True
 
 
-def mudar_intercambiar(genes):
+def mutar_intercambiar(genes):
     if len(genes) < 2:
         return False
     índiceA, índiceB = random.sample(range(len(genes)), 2)
@@ -162,7 +162,7 @@ def mudar_intercambiar(genes):
     return True
 
 
-def mudar_mover(genes):
+def mutar_mover(genes):
     if len(genes) < 3:
         return False
     principio = random.choice(range(len(genes)))
@@ -176,7 +176,7 @@ def mudar_mover(genes):
     return True
 
 
-def mudar_a_conjunto_de_caracteres(genes):
+def mutar_a_conjunto_de_caracteres(genes):
     if len(genes) < 3:
         return False
     o = [i for i in range(1, len(genes) - 1)
@@ -197,7 +197,7 @@ def mudar_a_conjunto_de_caracteres(genes):
     return True
 
 
-def mudar_a_conjunto_de_caracteres_izquierda(genes, deseadas):
+def mutar_a_conjunto_de_caracteres_izquierda(genes, deseadas):
     if len(genes) < 4:
         return False
     o = [i for i in range(-1, len(genes) - 3)
@@ -225,13 +225,13 @@ def mudar_a_conjunto_de_caracteres_izquierda(genes, deseadas):
     return True
 
 
-def mudar_add_deseadas(genes, deseadas):
+def mutar_add_deseadas(genes, deseadas):
     índice = random.randrange(0, len(genes) + 1) if len(genes) > 0 else 0
     genes[índice:índice] = ['|'] + [random.choice(deseadas)]
     return True
 
 
-def mudar(genes, fnObtenerAptitud, operadoresDeMutación, recuentoDeMutaciones):
+def mutar(genes, fnObtenerAptitud, operadoresDeMutación, recuentoDeMutaciones):
     aptitudInicial = fnObtenerAptitud(genes)
     cuenta = random.choice(recuentoDeMutaciones)
     for i in range(1, cuenta + 2):
@@ -262,7 +262,7 @@ class PruebasDeRegex(unittest.TestCase):
         noDeseadas = {"N" + l for l in "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
                       if "N" + l not in deseadas}
         operadoresPersonalizados = [
-            partial(mudar_a_conjunto_de_caracteres_izquierda,
+            partial(mutar_a_conjunto_de_caracteres_izquierda,
                     deseadas=deseadas),
         ]
         self.encontrar_regex(deseadas, noDeseadas, 11,
@@ -275,7 +275,7 @@ class PruebasDeRegex(unittest.TestCase):
         noDeseadas = {"0", "1", "000", "001", "010", "011", "100", "101",
                       "110", "111", ""}
         operadoresPersonalizados = [
-            mudar_a_conjunto_de_caracteres,
+            mutar_a_conjunto_de_caracteres,
         ]
         self.encontrar_regex(deseadas, noDeseadas, 10,
                              operadoresPersonalizados)
@@ -297,10 +297,10 @@ class PruebasDeRegex(unittest.TestCase):
                       if a + b not in deseadas} | \
                      set(i for i in "ABCDEFGHIJKLMNOPQRSTUVWXYZ")
         operadoresPersonalizados = [
-            partial(mudar_a_conjunto_de_caracteres_izquierda,
+            partial(mutar_a_conjunto_de_caracteres_izquierda,
                     deseadas=deseadas),
-            mudar_a_conjunto_de_caracteres,
-            partial(mudar_add_deseadas, deseadas=[i for i in deseadas]),
+            mutar_a_conjunto_de_caracteres,
+            partial(mutar_add_deseadas, deseadas=[i for i in deseadas]),
         ]
         self.encontrar_regex(deseadas, noDeseadas, 120,
                              operadoresPersonalizados)
@@ -320,17 +320,17 @@ class PruebasDeRegex(unittest.TestCase):
         recuentoDeMutaciones = [1]
 
         operadoresDeMutación = [
-            partial(mudar_añadir, geneSet=geneSet),
-            partial(mudar_reemplazar, geneSet=geneSet),
-            mudar_remover,
-            mudar_intercambiar,
-            mudar_mover,
+            partial(mutar_añadir, geneSet=geneSet),
+            partial(mutar_reemplazar, geneSet=geneSet),
+            mutar_remover,
+            mutar_intercambiar,
+            mutar_mover,
         ]
         if operadoresPersonalizados is not None:
             operadoresDeMutación.extend(operadoresPersonalizados)
 
-        def fnMudar(genes):
-            mudar(genes, fnObtenerAptitud, operadoresDeMutación,
+        def fnMutar(genes):
+            mutar(genes, fnObtenerAptitud, operadoresDeMutación,
                   recuentoDeMutaciones)
 
         aptitudÓptima = Aptitud(len(deseadas), len(deseadas), 0,
@@ -338,7 +338,7 @@ class PruebasDeRegex(unittest.TestCase):
 
         mejor = genetic.obtener_mejor(
             fnObtenerAptitud, max(len(i) for i in genesDeTexto),
-            aptitudÓptima, geneSet, fnMostrar, fnMudar, tamañoDePiscina=10)
+            aptitudÓptima, geneSet, fnMostrar, fnMutar, tamañoDePiscina=10)
         self.assertTrue(not aptitudÓptima > mejor.Aptitud)
 
         for info in erroresEnRegexes.values():
@@ -381,7 +381,7 @@ class Aptitud:
         return self.Longitud < otro.Longitud
 
     def __str__(self):
-        return "coincide con: {} deseadas y, {} no deseadas, lon {}".format(
+        return "coincide con: {} deseadas, y {} no deseadas, lon {}".format(
             "todas" if self._totalDeseado ==
                        self.NúmeroDeDeseadosQueCoincidieron else
             self.NúmeroDeDeseadosQueCoincidieron,

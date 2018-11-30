@@ -41,7 +41,7 @@ def mostrar(candidato, horaInicio, tableroAncho, tableroAltura):
         diferencia))
 
 
-def mudar(genes, tableroAncho, tableroAltura, todasPosiciones,
+def mutar(genes, tableroAncho, tableroAltura, todasPosiciones,
           posicionesNoBordeadas):
     cuenta = 2 if random.randint(0, 10) == 0 else 1
     while cuenta > 0:
@@ -150,8 +150,8 @@ class PruebasDeCaballos(unittest.TestCase):
         def fnObtenerPosiciónAleatoria():
             return random.choice(posicionesNoBordeadas)
 
-        def fnMudar(genes):
-            mudar(genes, tableroAncho, tableroAltura, todasPosiciones,
+        def fnMutar(genes):
+            mutar(genes, tableroAncho, tableroAltura, todasPosiciones,
                   posicionesNoBordeadas)
 
         def fnCrear():
@@ -159,7 +159,7 @@ class PruebasDeCaballos(unittest.TestCase):
 
         aptitudÓptima = tableroAncho * tableroAltura
         mejor = genetic.obtener_mejor(fnObtenerAptitud, None, aptitudÓptima,
-                                      None, fnMostrar, fnMudar, fnCrear)
+                                      None, fnMostrar, fnMutar, fnCrear)
         self.assertTrue(not aptitudÓptima > mejor.Aptitud)
 
 

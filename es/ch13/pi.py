@@ -61,7 +61,7 @@ def obtener_denominador(genes, valoresDeBits):
     return bits_a_entero(genes[len(valoresDeBits):], valoresDeBits)
 
 
-def mudar(genes, numBits):
+def mutar(genes, numBits):
     índiceDelNumerador, índiceDelDenominador \
         = random.randrange(0, numBits), random.randrange(numBits,
                                                          len(genes))
@@ -83,13 +83,13 @@ class PruebasDePi(unittest.TestCase):
 
         aptitudÓptima = 3.14159
 
-        def fnMudar(genes):
-            mudar(genes, len(valoresDeBits))
+        def fnMutar(genes):
+            mutar(genes, len(valoresDeBits))
 
         longitud = 2 * len(valoresDeBits)
         mejor = genetic.obtener_mejor(fnObtenerAptitud, longitud,
                                       aptitudÓptima, geneSet, fnMostrar,
-                                      fnMudar, edadMáxima=250,
+                                      fnMutar, edadMáxima=250,
                                       segundosMáximos=segundosMáximos)
         return aptitudÓptima <= mejor.Aptitud
 

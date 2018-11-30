@@ -60,7 +60,7 @@ def crear_gen(índice, puertas, fuentes):
     return Nodo(tipoDePuerta[0], índiceA, índiceB)
 
 
-def mudar(genesDelNiño, fnCrearGen, fnObtenerAptitud, fuenteCount):
+def mutar(genesDelNiño, fnCrearGen, fnObtenerAptitud, fuenteCount):
     cuenta = random.randint(1, 5)
     aptitudInicial = fnObtenerAptitud(genesDelNiño)
     while cuenta > 0:
@@ -173,8 +173,8 @@ class PruebasDeCircuitos(unittest.TestCase):
         def fnCrearGen(índice):
             return crear_gen(índice, self.puertas, self.fuentes)
 
-        def fnMudar(genes):
-            mudar(genes, fnCrearGen, fnObtenerAptitud, len(self.fuentes))
+        def fnMutar(genes):
+            mutar(genes, fnCrearGen, fnObtenerAptitud, len(self.fuentes))
 
         longitudMáxima = 50
 
@@ -186,7 +186,7 @@ class PruebasDeCircuitos(unittest.TestCase):
             longitudMáxima = longitudVariable
             return genetic.obtener_mejor(
                 fnObtenerAptitud, None, len(reglas), None, fnMostrar,
-                fnMudar, fnCrear, tamañoDePiscina=3, segundosMáximos=30)
+                fnMutar, fnCrear, tamañoDePiscina=3, segundosMáximos=30)
 
         def fnEsUnaMejora(mejorActual, niño):
             return niño.Aptitud == len(reglas) and \
