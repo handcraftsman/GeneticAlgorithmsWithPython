@@ -143,8 +143,7 @@ def _get_improvement(new_child, generate_parent, maxAge, poolSize, maxSeconds):
                 continue
             index = bisect_left(historicalFitnesses, child.Fitness, 0,
                                 len(historicalFitnesses))
-            difference = len(historicalFitnesses) - index
-            proportionSimilar = difference / len(historicalFitnesses)
+            proportionSimilar = index / len(historicalFitnesses)
             if random.random() < exp(-proportionSimilar):
                 parents[pindex] = child
                 continue

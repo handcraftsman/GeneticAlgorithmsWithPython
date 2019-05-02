@@ -150,8 +150,7 @@ def _obtener_mejoras(nuevo_niño, generar_padre, edadMáxima, tamañoDePiscina,
                 continue
             índice = bisect_left(aptitudesHistóricas, niño.Aptitud, 0,
                                  len(aptitudesHistóricas))
-            diferencia = len(aptitudesHistóricas) - índice
-            proporciónSimilar = diferencia / len(aptitudesHistóricas)
+            proporciónSimilar = índice / len(aptitudesHistóricas)
             if random.random() < exp(-proporciónSimilar):
                 padres[pÍndice] = niño
                 continue
