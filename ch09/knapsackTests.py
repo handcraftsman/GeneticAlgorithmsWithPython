@@ -254,10 +254,10 @@ class Fitness:
 
     def __gt__(self, other):
         if self.TotalValue != other.TotalValue:
-           return self.TotalValue > other.TotalValue
+            return self.TotalValue > other.TotalValue
         if self.TotalWeight != other.TotalWeight:
             return self.TotalWeight < other.TotalWeight
-        return self.TotalValue < other.TotalValue
+        return self.TotalVolume < other.TotalVolume
 
     def __str__(self):
         return "wt: {:0.2f} vol: {:0.2f} value: {}".format(
