@@ -95,6 +95,8 @@ def reparar_in_character_set(símbolo, resultado, finales):
         return manejar_metas_de_repetición_que_siguen_metas_de_repetición_o_inicio
     elif símbolo == '[':
         pass
+    elif símbolo == '|' and resultado[-1] == '|':
+        pass  # suprimir FutureWarning sobre ||
     else:
         resultado.append(símbolo)
     return reparar_in_character_set

@@ -96,6 +96,8 @@ def repair_in_character_set(token, result, finals):
         return repair_ignore_repeat_metas_following_repeat_or_start_metas
     elif token == '[':
         pass
+    elif token == '|' and result[-1] == '|':
+        pass  # suppresses FutureWarning about ||
     else:
         result.append(token)
     return repair_in_character_set
