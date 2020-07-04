@@ -53,8 +53,7 @@ def create_gene(index, gates, sources):
     if gateType[1].input_count() > 0:
         indexA = random.randint(0, index)
     if gateType[1].input_count() > 1:
-        indexB = random.randint(0, index) \
-            if index > 1 and index >= len(sources) else 0
+        indexB = random.randint(0, index)
         if indexB == indexA:
             indexB = random.randint(0, index)
     return Node(gateType[0], indexA, indexB)
